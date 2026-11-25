@@ -15,7 +15,7 @@ accepts(State, LeftTapeReverse, [Symbol | RestRightTape]) :- %right
 
 accepts(State, [PreviousSymbol | RestLeftTape], [Symbol | RestRightTape]) :- %left
     transition(State, Symbol, NewState, NewSymbol, left),
-    accepts(NewState, RestLeftTape, [PreviousSymbo, Symbol | RestRightTape]).
+    accepts(NewState, RestLeftTape, [PreviousSymbol, NewSymbol | RestRightTape]).
 
 accepts(State, LeftTapeReverse, []) :- %stay
     transition(State, blank, NewState, NewSymbol, stay),
@@ -35,5 +35,5 @@ accepts(State, [], [Symbol | RestRightTape]) :- %left
 
 accepts(State, [], []) :- %left
     transition(State, blank, NewState, NewSymbol, left),
-    accpets(NewState, [], [blank, NewSymbol]).
+    accepts(NewState, [], [blank, NewSymbol]).
     
